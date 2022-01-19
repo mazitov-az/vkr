@@ -1,0 +1,9 @@
+body {
+	margin: 0px;
+	background: url(/images/2.png) no-repeat bottom right, url(/images/1.png) no-repeat bottom left;
+	background-size: 40% 40%;
+	background-attachment: fixed;
+}
+
+/*	background-size: cover;*/
+/*url(/images/back.jpg) no-repeat center center,*/

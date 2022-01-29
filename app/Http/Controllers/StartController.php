@@ -12,8 +12,7 @@ use App\Models\Tube;
 class StartController extends Controller
 {
     public function start() {
-
-
+    	
     	$context = ['cons' => Connector::latest()->get(), 
     				'wires' => Wire::latest()->get(),
     				'shields' => Shieldinge::latest()->get(),

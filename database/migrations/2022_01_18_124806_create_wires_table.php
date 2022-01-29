@@ -18,6 +18,7 @@ class CreateWiresTable extends Migration
             $table->string('title', 20);
             $table->float('weight');
             $table->float('section');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');            
             $table->timestamps();
             $table->index('created_at');
         });

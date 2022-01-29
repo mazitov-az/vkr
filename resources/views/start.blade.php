@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('title-cables')
 	Расчет массы кабеля
@@ -27,6 +27,9 @@
 			<option value="{{ $i }}">{{ $i }}</option>
 			@endfor
 		</select>
+	</div>					
+	<div class="col-md-1">
+		<button type="button" class="btn btn-outline-success btn-sm">+</button>
 	</div>					
 </form>
 
@@ -71,7 +74,7 @@
 </form>
 
 <p>Выберети тип изолирующей трубки и укажите количество в метрах</p>
-<form class="row g-2 needs-validation">
+<form class="row g-3 needs-validation">
 	<div class="col-md-5">
 		<select class="form-select form-select-sm mb-3">
 			<option value="Тип оплетки">Тип оплетки</option>
@@ -87,14 +90,32 @@
 			<option value="{{ $i }}">{{ $i }}</option>
 			@endfor
 		</select>
-	</div>					
+	</div>
 </form>
+  <button class="btn btn-success btn-sm" type="button">Добавить</button>
 
-<button type="submit" class="btn btn-success" style="position: relative; float: left;">Добавить</button>
 @endsection
 
 @section('aside')
 	@parent
 	<h4>Список кабелей</h4>
-
+	<table class="table table-bordered border-success" style="font-size: 80%;">
+		<thead>
+			<tr>
+				<th scope="col">Наименование</th>
+				<th scope="col">Наименование</th>
+				<th scope="col">Вес, кг</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Кабель К1</td>
+				<td>соединитель, провод, трубка, плетенка</td>
+				<td>вес</td>
+				<td><a href="">Изменить</a></td>
+                <td><a href="">Удалить</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<button class="btn btn-success btn-sm" type="button" style="position: relative; float: right;">Очистить список</button>
 @endsection

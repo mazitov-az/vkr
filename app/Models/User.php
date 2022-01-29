@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Connector;
+use App\Models\Wire;
+use App\Models\Shieldinge;
+use App\Models\Tube;
 
 class User extends Authenticatable
 {
@@ -41,4 +45,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function connectors()
+    {
+        return $this->hasMany(Connector::class);
+    }
+
+    public function wires()
+    {
+        return $this->hasMany(Wire::class);
+    }
+
+    public function shieldinges()
+    {
+        return $this->hasMany(Shieldinge::class);
+    }
+
+    public function tubes()
+    {
+        return $this->hasMany(Tube::class);
+    }
+
 }

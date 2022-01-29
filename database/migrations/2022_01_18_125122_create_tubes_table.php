@@ -18,6 +18,7 @@ class CreateTubesTable extends Migration
             $table->string('title', 20);
             $table->float('weight');
             $table->text('diameter');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->index('created_at');
         });

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Connector;
+use App\Models\User;
 
 class ConnectorSeeder extends Seeder
 {

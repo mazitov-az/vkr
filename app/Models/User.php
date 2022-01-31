@@ -46,24 +46,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function connectors()
+    public function cables()
     {
-        return $this->hasMany(Connector::class);
+        return $this->hasMany(Cable::class);
     }
 
-    public function wires()
-    {
-        return $this->hasMany(Wire::class);
-    }
-
-    public function shieldinges()
-    {
-        return $this->hasMany(Shieldinge::class);
-    }
-
-    public function tubes()
-    {
-        return $this->hasMany(Tube::class);
-    }
 
 }

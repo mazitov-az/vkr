@@ -10,9 +10,5 @@ class Tube extends Model
 {
     protected $fillable = ['title', 'weight', 'diameter'];
 
-    public function user()
-    {
-    	return $this->belongsTo(User::class);
-    }
 
 }

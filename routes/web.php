@@ -8,10 +8,6 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-// Route::get('/start', function () {
-//     return view('start');
-// })->name('start');
-
 Route::get('/start', [HomeController::class, 'start'])->name('start');
 
 Auth::routes();

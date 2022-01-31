@@ -28,15 +28,32 @@ class HomeController extends Controller
      */
     public function start()
     {
-                $context = ['cons' => Auth::user()->connectors()->get(), 
-                    'wires' => Auth::user()->wires()->get(),
-                    'shields' => Auth::user()->shieldinges()->get(),
-                    'tubes' => Auth::user()->tubes()->get()
+        $context = ['cons' => Connector::latest()->get(), 
+                    'wires' => Wire::latest()->get(),
+                    'shields' => Shieldinge::latest()->get(),
+                    'tubes' => Tube::latest()->get()
         ];
+
         return view('start', $context);
     } 
+
     public function index()
     {
         return view('home');
     }
+
+    public function storeCable(Request $request)
+    {
+        // Auth::user()->cables()->create(['name' => $request->input('nameCable'),
+        //                                 'component' => $request->])
+        $cable = new Cable();
+        $cable->name = $request->input('nameCable');
+        $cable->component = [$request->option($con->title) . " x " . $request->input('numConnect1'),
+                            $request->option($wire->title) . " x " . $request->input('numWire1'),
+                            $request->option($shield->title) . " x " . $request->input('numShield1'),
+                            $request->option($tube->title) . " x " . $request->input('numTube1')
+                            ];
+        
+    }
+
 }

@@ -10,9 +10,4 @@ class Wire extends Model
 {
     protected $fillable = ['title', 'weight', 'section'];
 
-    public function user()
-    {
-    	return $this->belongsTo(User::class);
-    }
-
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWiresTable extends Migration
+class CreateCablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateWiresTable extends Migration
      */
     public function up()
     {
-        Schema::create('wires', function (Blueprint $table) {
+        Schema::create('cables', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 20);
+            $table->string('name', 20);
+            $table->string('component');
             $table->float('weight');
-            $table->float('section');            
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->index('created_at');
         });
@@ -30,6 +31,6 @@ class CreateWiresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wires');
+        Schema::dropIfExists('cables');
     }
 }

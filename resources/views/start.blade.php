@@ -7,11 +7,11 @@
 @section('content')
 <div class="input-group" style="width: 500px;">
   <span class="input-group-text">Наименование кабеля</span>
-  <input type="text" class="form-control" placeholder="Кабель К1">
+  <input id="nameCable" type="text" class="form-control" placeholder="Кабель К1">
 </div>
 <br>
 <p>Выберети тип соединителя и укажите его количество в штуках</p>
-<form class="row g-2 needs-validation">
+<form class="row g-3 needs-validation">
 	<div class="col-md-5">
 		<select class="form-select form-select-sm mb-3">
 			<option value="Тип соединителя">Тип соединителя</option>
@@ -20,21 +20,16 @@
 			@endforeach
 		</select>
 	</div>
-	<div class="col-md-5">	
-		<select class="form-select form-select-sm mb-3">
-			<option value="Количество">Количество</option>
-			@for($i=1; $i<10; $i++)
-			<option value="{{ $i }}">{{ $i }}</option>
-			@endfor
-		</select>
-	</div>					
-	<div class="col-md-1">
+	<div class="col-md-3">	
+		<input type="text" class="form-control-sm" id="numConnect1" placeholder="Количество, шт" required >
+	</div>
+	<div class="col-md-4">	
 		<button type="button" class="btn btn-outline-success btn-sm">+</button>
-	</div>					
+	</div>											
 </form>
 
 <p>Выберети тип марку провода и укажите количество в метрах</p>
-<form class="row g-2 needs-validation">
+<form class="row g-3 needs-validation">
 	<div class="col-md-5">
 		<select class="form-select form-select-sm mb-3">
 			<option value="Марка провода">Марка провода</option>
@@ -43,18 +38,16 @@
 			@endforeach
 		</select>
 	</div>
-	<div class="col-md-5">	
-		<select class="form-select form-select-sm mb-3">
-			<option value="Количество">Количество</option>
-			@for($i=1; $i<10; $i++)
-			<option value="{{ $i }}">{{ $i }}</option>
-			@endfor
-		</select>
+	<div class="col-md-3">	
+		<input type="text" class="form-control-sm" id="numWire1" placeholder="Количество, м" required >
+	</div>
+	<div class="col-md-4">	
+		<button type="button" class="btn btn-outline-success btn-sm">+</button>
 	</div>					
 </form>	
 
 <p>Выберети тип экранирующей оплетки и укажите количество в метрах</p>
-<form class="row g-2 needs-validation">
+<form class="row g-3 needs-validation">
 	<div class="col-md-5">
 		<select class="form-select form-select-sm mb-3">
 			<option value="Тип оплетки">Тип оплетки</option>
@@ -63,13 +56,11 @@
 			@endforeach
 		</select>
 	</div>
-	<div class="col-md-5">	
-		<select class="form-select form-select-sm mb-3">
-			<option value="Количество">Количество</option>
-			@for($i=1; $i<10; $i++)
-			<option value="{{ $i }}">{{ $i }}</option>
-			@endfor
-		</select>
+	<div class="col-md-3">	
+		<input type="text" class="form-control-sm" id="numShield1" placeholder="Количество, м" required >
+	</div>
+	<div class="col-md-4">	
+		<button type="button" class="btn btn-outline-success btn-sm">+</button>
 	</div>					
 </form>
 
@@ -83,16 +74,14 @@
 			@endforeach
 		</select>
 	</div>
-	<div class="col-md-5">	
-		<select class="form-select form-select-sm mb-3">
-			<option value="Количество">Количество</option>
-			@for($i=1; $i<10; $i++)
-			<option value="{{ $i }}">{{ $i }}</option>
-			@endfor
-		</select>
+	<div class="col-md-3">	
+		<input type="text" class="form-control-sm" id="numTube1" placeholder="Количество, м" required >
 	</div>
+	<div class="col-md-4">	
+		<button type="button" class="btn btn-outline-success btn-sm">+</button>
+	</div>	
 </form>
-  <button class="btn btn-success btn-sm" type="button">Добавить</button>
+  <button class="btn btn-success btn-sm" type="button">Добавить в список</button>
 
 @endsection
 

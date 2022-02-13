@@ -15,12 +15,13 @@ class CreateCablesTable extends Migration
     {
         Schema::create('cables', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
-            $table->string('component');
-            $table->float('weight');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
-            $table->index('created_at');
+            $table->string('name');
+            $table->integer('user_id');
+            $table->integer('connector_id');
+            $table->integer('wire_id');
+            $table->integer('shieldinge_id');
+            $table->integer('tube_id');
+            $table->float('weight');                      
         });
     }
 

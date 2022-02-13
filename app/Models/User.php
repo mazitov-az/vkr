@@ -14,6 +14,8 @@ use App\Models\Tube;
 
 class User extends Authenticatable
 {
+    public $timestamps = false;
+    
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -50,6 +52,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cable::class);
     }
-
 
 }

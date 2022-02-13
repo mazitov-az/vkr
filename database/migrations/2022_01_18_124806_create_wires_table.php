@@ -18,8 +18,6 @@ class CreateWiresTable extends Migration
             $table->string('title', 20);
             $table->float('weight');
             $table->float('section');            
-            $table->timestamps();
-            $table->index('created_at');
         });
     }
 

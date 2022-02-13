@@ -8,6 +8,8 @@ use App\Models\Connector;
 use App\Models\Wire;
 use App\Models\Shieldinge;
 use App\Models\Tube;
+use App\Models\Cable;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -28,10 +30,10 @@ class HomeController extends Controller
      */
     public function start()
     {
-        $context = ['cons' => Connector::latest()->get(), 
-                    'wires' => Wire::latest()->get(),
-                    'shields' => Shieldinge::latest()->get(),
-                    'tubes' => Tube::latest()->get()
+        $context = ['cons' => Connector::find(1)->get(), 
+                    'wires' => Wire::find(1)->get(),
+                    'shields' => Shieldinge::find(1)->get(),
+                    'tubes' => Tube::find(1)->get()
         ];
 
         return view('start', $context);
@@ -44,16 +46,23 @@ class HomeController extends Controller
 
     public function storeCable(Request $request)
     {
-        // Auth::user()->cables()->create(['name' => $request->input('nameCable'),
-        //                                 'component' => $request->])
-        $cable = new Cable();
-        $cable->name = $request->input('nameCable');
-        $cable->component = [$request->option($con->title) . " x " . $request->input('numConnect1'),
-                            $request->option($wire->title) . " x " . $request->input('numWire1'),
-                            $request->option($shield->title) . " x " . $request->input('numShield1'),
-                            $request->option($tube->title) . " x " . $request->input('numTube1')
-                            ];
+        $con = Connector::find(1);
+        $wire = Wire::find(1);
+        $shield = Shieldinge::find(1);
+        $tube = Tube::find(1);
+
+        $weight = $con['weight'] + $wire['weight'] + $shield['weight'] + $tube['weight'];
+
+        Auth::user()->cables()->create(['name' => $request->nameCable,
+                                        'connector_id' => $request->$con['id'],
+                                        'wire_id' => $request->$wire['id'],
+                                        'shieldinge_id' => $request->$shield['id'],
+                                        'tube_id' => $request->$tube['id'],
+                                        'weight' => $weight
+                                        ]);
+
         
+        dd( request()->all() );
     }
 
 }

@@ -18,8 +18,6 @@ class CreateTubesTable extends Migration
             $table->string('title', 20);
             $table->float('weight');
             $table->text('diameter');
-            $table->timestamps();
-            $table->index('created_at');
         });
     }
 

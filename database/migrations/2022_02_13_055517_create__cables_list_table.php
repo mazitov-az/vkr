@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShieldingesTable extends Migration
+class CreateCablesListTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateShieldingesTable extends Migration
      */
     public function up()
     {
-        Schema::create('shieldinges', function (Blueprint $table) {
+        Schema::create('CablesList', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 20);
-            $table->float('weight');
-            $table->text('diameter');
+            $table->integer('cable_id');
+            $table->integer('cableable_id');
+            $table->string('cableable_type');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateShieldingesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shieldinges');
+        Schema::dropIfExists('CablesList');
     }
 }

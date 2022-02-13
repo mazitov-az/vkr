@@ -15,4 +15,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('index');
 
 Route::get('/home/add', [HomeController::class, 'showAddCableForm'])->name('cable.add');
-Route::post('/home', [HomeController::class, 'storeCable'])->name('cable.store');
+Route::post('/start', [HomeController::class, 'storeCable'])->name('cable.store');

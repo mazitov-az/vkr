@@ -7,13 +7,13 @@
 @section('content')
 <div class="input-group" style="width: 500px;">
   <span class="input-group-text">Наименование кабеля</span>
-  <input id="nameCable" type="text" class="form-control" placeholder="Кабель К1">
+  <input name="nameCable" id="nameCable" type="text" class="form-control" placeholder="Кабель К1">
 </div>
 <br>
 <p>Выберети тип соединителя и укажите его количество в штуках</p>
 <form class="row g-3 needs-validation">
 	<div class="col-md-5">
-		<select class="form-select form-select-sm mb-3">
+		<select class="form-select form-select-sm mb-3" name="Connector1" id="Connector1">
 			<option value="Тип соединителя">Тип соединителя</option>
 			@foreach($cons as $con)
 			<option value="{{ $con->id }}">{{ $con->title }}</option>
@@ -31,7 +31,7 @@
 <p>Выберети тип марку провода и укажите количество в метрах</p>
 <form class="row g-3 needs-validation">
 	<div class="col-md-5">
-		<select class="form-select form-select-sm mb-3">
+		<select class="form-select form-select-sm mb-3" name="Wire1">
 			<option value="Марка провода">Марка провода</option>
 			@foreach($wires as $wire)
 			<option value="{{ $wire->id }}">{{ $wire->title }} {{ $wire->section }}</option>
@@ -49,7 +49,7 @@
 <p>Выберети тип экранирующей оплетки и укажите количество в метрах</p>
 <form class="row g-3 needs-validation">
 	<div class="col-md-5">
-		<select class="form-select form-select-sm mb-3">
+		<select class="form-select form-select-sm mb-3" name="Shieldinge1">
 			<option value="Тип оплетки">Тип оплетки</option>
 			@foreach($shields as $shield)
 			<option value="{{ $shield->id }}">{{ $shield->title }} {{ $shield->diameter }}</option>
@@ -67,8 +67,8 @@
 <p>Выберети тип изолирующей трубки и укажите количество в метрах</p>
 <form class="row g-3 needs-validation">
 	<div class="col-md-5">
-		<select class="form-select form-select-sm mb-3">
-			<option value="Тип оплетки">Тип оплетки</option>
+		<select class="form-select form-select-sm mb-3" name="Tube1">
+			<option value="Тип трубки">Тип трубки</option>
 			@foreach($tubes as $tube)
 			<option value="{{ $tube->id }}">{{ $tube->title }} {{ $tube->diameter }}</option>
 			@endforeach
@@ -81,7 +81,12 @@
 		<button type="button" class="btn btn-outline-success btn-sm">+</button>
 	</div>	
 </form>
-  <button class="btn btn-success btn-sm" type="button">Добавить в список</button>
+
+<form action="{{ route('cable.store') }}" method="POST">  
+	<button class="btn btn-success btn-sm" type="submit">Добавить в список</button>
+@csrf
+@method('post') 
+</form>
 
 @endsection
 

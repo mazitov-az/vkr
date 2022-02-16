@@ -9,7 +9,14 @@ use App\Models\User;
 class Cable extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['name', 'weight'];
+    protected $fillable = [
+        'name',
+        'connector_id',
+        'wire_id',
+        'shieldinge_id',
+        'tube_id',
+        'weight',
+    ];
 
     public function users()
     {
@@ -24,7 +31,7 @@ class Cable extends Model
     public function wires()
     {
         return $this->morphedByMany(Wire::class, 'cableable');
-    }    
+    }
 
     public function shieldinges()
     {

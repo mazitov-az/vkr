@@ -30,14 +30,15 @@ class HomeController extends Controller
      */
     public function start()
     {
-        $context = ['cons' => Connector::find(1)->get(), 
-                    'wires' => Wire::find(1)->get(),
-                    'shields' => Shieldinge::find(1)->get(),
-                    'tubes' => Tube::find(1)->get()
+        $context = [
+            'cons' => Connector::find(1)?->get(),
+            'wires' => Wire::find(1)?->get(),
+            'shields' => Shieldinge::find(1)?->get(),
+            'tubes' => Tube::find(1)?->get()
         ];
 
         return view('start', $context);
-    } 
+    }
 
     public function index()
     {
@@ -53,16 +54,25 @@ class HomeController extends Controller
 
         $weight = $con['weight'] + $wire['weight'] + $shield['weight'] + $tube['weight'];
 
-        Auth::user()->cables()->create(['name' => $request->nameCable,
-                                        'connector_id' => $request->$con['id'],
-                                        'wire_id' => $request->$wire['id'],
-                                        'shieldinge_id' => $request->$shield['id'],
-                                        'tube_id' => $request->$tube['id'],
-                                        'weight' => $weight
-                                        ]);
+        dd([
+            'name' => $request->nameCable,
+            'connector_id' => $con->id,
+            'wire_id' => $wire->id,
+            'shieldinge_id' => $shield->id,
+            'tube_id' => $tube->id,
+            'weight' => $weight
+        ]);
+        Auth::user()->cables()->create([
+            'name' => (string)$request->nameCable,
+            'connector_id' => $con->id,
+            'wire_id' => $wire->id,
+            'shieldinge_id' => $shield->id,
+            'tube_id' => $tube->id,
+            'weight' => $weight
+        ]);
 
-        
-        dd( request()->all() );
+
+        dd(request()->all());
     }
 
 }

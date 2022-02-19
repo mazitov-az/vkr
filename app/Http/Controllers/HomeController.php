@@ -54,14 +54,6 @@ class HomeController extends Controller
 
         $weight = $con['weight'] + $wire['weight'] + $shield['weight'] + $tube['weight'];
 
-        dd([
-            'name' => $request->nameCable,
-            'connector_id' => $con->id,
-            'wire_id' => $wire->id,
-            'shieldinge_id' => $shield->id,
-            'tube_id' => $tube->id,
-            'weight' => $weight
-        ]);
         Auth::user()->cables()->create([
             'name' => (string)$request->nameCable,
             'connector_id' => $con->id,
